@@ -1,16 +1,12 @@
 package pl.dominisz;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Primary;
-import org.springframework.stereotype.Component;
+import com.google.inject.Inject;
 
-@Component
-@Primary
 public class EmailSenderImpl implements EmailSender {
 
   private final EmailFilter emailFilter;
 
-  @Autowired
+  @Inject
   public EmailSenderImpl(EmailFilter emailFilter) {
     this.emailFilter = emailFilter;
   }

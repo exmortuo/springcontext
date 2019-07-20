@@ -1,14 +1,12 @@
 package pl.dominisz;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import com.google.inject.Inject;
 
-@Component
 public class MessagePrinter {
 
   private final MessageService service;
 
-  @Autowired
+  @Inject
   public MessagePrinter(MessageService service) {
     this.service = service;
   }

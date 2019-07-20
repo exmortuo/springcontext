@@ -1,19 +1,17 @@
 package pl.dominisz;
 
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.annotation.ComponentScan;
+import com.google.inject.Guice;
+import com.google.inject.Injector;
 
-@ComponentScan
 public class Application {
 
   public static void main(String[] args) {
-    ApplicationContext context = new AnnotationConfigApplicationContext(Application.class);
+    Injector injector = Guice.createInjector(new MessageModule());
 
-    MessagePrinter printer = context.getBean(MessagePrinter.class);
+    MessagePrinter printer = injector.getInstance(MessagePrinter.class);
     printer.printMessage();
 
-    EmailSender emailSender = context.getBean(EmailSender.class);
+    EmailSender emailSender = injector.getInstance(EmailSender.class);
     emailSender.send("dominisz@gmail", "test", "Test 123");
   }
 }
