@@ -21,7 +21,11 @@ public class Application {
 
   public static void main(String[] args) {
     ApplicationContext context = new AnnotationConfigApplicationContext(Application.class);
+
     MessagePrinter printer = context.getBean(MessagePrinter.class);
     printer.printMessage();
+
+    EmailSender emailSender = context.getBean(EmailSender.class);
+    emailSender.send("dominisz@gmail", "test", "Test 123");
   }
 }
